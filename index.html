@@ -8,6 +8,13 @@
   <body>
     <h2>Hello OpenCV.js</h2>
     <p id="status">OpenCV.js is loading...</p>
+    <div>
+      <video id="videoInput" width="320" height="240" controls></video>
+      <button id="video">Video</button>
+      <canvas width="320" height="240" id="canvasFrame"></canvas>
+      <canvas width="320" height="240" id="canvasOutput2"></canvas>
+    </div>
+
     <div class="generalContainer">
       <div class="inputoutput">
         <img id="imageSrc" alt="No Image" />
@@ -23,6 +30,9 @@
     <div>
       <button id="reset">Reset</button>
       <button id="convolution">Convolution</button>
+      <button id="blurringGaussian">Gaussian Blur</button>
+      <button id="blurringMedian">Median Blur</button>
+      <button id="bilateralFilter">Bilateral Filter</button>
     </div>
     <script type="text/javascript">
       let imgElement = document.getElementById("imageSrc");
