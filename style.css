@@ -1,3 +1,7 @@
 #imageSrc {
   width: 350px;
 }
+
+.generalContainer {
+  display: flex;
+}
