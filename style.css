@@ -1,7 +1,23 @@
 #imageSrc {
-  width: 750px;
+  width: 400px;
 }
 
 .generalContainer {
   display: flex;
+}
+
+.videoAndBtn {
+  display: flex;
+  flex-direction: column;
+
+  width: 320px;
+}
+
+.videoCanvas {
+  display: flex;
+  align-items: flex-start;
+}
+
+canvas {
+  border: 1px solid red;
 }
