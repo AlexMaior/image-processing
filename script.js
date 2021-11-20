@@ -137,6 +137,17 @@ function videoDetectFace() {
     classifier.load(faceCascadeFile); // in the callback, load the cascade from file
   });
   const FPS = 24;
+
+  function screenShot() {
+    let canvas = document.getElementById("canvasOutput4");
+    canvas.getContext("2d").drawImage(video, 0, 0, canvas.width, canvas.height);
+    let image_data_url = canvas.toDataURL("image/jpeg");
+
+    // data url of the image
+    console.log(image_data_url);
+    console.log("BALABLABDKSBDCSKJBC");
+  }
+
   function processVideo() {
     let begin = Date.now();
     cap.read(src);
@@ -145,6 +156,9 @@ function videoDetectFace() {
     try {
       classifier.detectMultiScale(gray, faces, 1.1, 3, 0);
       console.log(faces.size());
+      if (faces.size() >= 2) {
+        screenShot();
+      }
     } catch (err) {
       console.log(err);
     }
