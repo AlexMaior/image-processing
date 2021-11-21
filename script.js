@@ -21,7 +21,6 @@ function convo() {
   let dst = new cv.Mat();
   let M = cv.Mat.eye(2, 2, cv.CV_32FC1);
   let anchor = new cv.Point(-1, -1);
-  // You can try more different parameters
   cv.filter2D(src, dst, cv.CV_8U, M, anchor, 0, cv.BORDER_DEFAULT);
   cv.imshow("canvasOutput", dst);
 
@@ -40,7 +39,6 @@ function blurringGaussian() {
   let src = cv.imread("imageSrc");
   let dst = new cv.Mat();
   let ksize = new cv.Size(3, 3);
-  // You can try more different parameters
   cv.GaussianBlur(src, dst, ksize, 0, 0, cv.BORDER_DEFAULT);
   cv.imshow("canvasOutput", dst);
   src.delete();
@@ -55,7 +53,6 @@ btnBlurMedian.addEventListener("click", blurringMedian);
 function blurringMedian() {
   let src = cv.imread("imageSrc");
   let dst = new cv.Mat();
-  // You can try more different parameters
   cv.medianBlur(src, dst, 5);
   cv.imshow("canvasOutput", dst);
   src.delete();
@@ -71,7 +68,6 @@ function bilateralFilter() {
   let src = cv.imread("imageSrc");
   let dst = new cv.Mat();
   cv.cvtColor(src, src, cv.COLOR_RGBA2RGB, 0);
-  // You can try more different parameters
   cv.bilateralFilter(src, dst, 9, 75, 75, cv.BORDER_DEFAULT);
   cv.imshow("canvasOutput", dst);
   src.delete();
@@ -103,19 +99,18 @@ function videoDetect() {
     cap.read(src);
     cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY);
     cv.imshow("canvasOutput2", dst);
-    // schedule next one.
     let delay = 1000 / FPS - (Date.now() - begin);
     setTimeout(processVideo, delay);
   }
-  // schedule first one.
   setTimeout(processVideo, 0);
 }
 
+// VIdeo cu face detection
 let videoBtnFace = document.getElementById("videoFace");
 videoBtnFace.addEventListener("click", videoDetectFace);
 
 function videoDetectFace() {
-  let video = document.getElementById("videoInput"); // video is the id of video tag
+  let video = document.getElementById("videoInput");
   navigator.mediaDevices
     .getUserMedia({ video: true, audio: false })
     .then(function (stream) {
@@ -132,9 +127,9 @@ function videoDetectFace() {
   let faces = new cv.RectVector();
   let classifier = new cv.CascadeClassifier();
   let utils = new Utils("errorMessage");
-  let faceCascadeFile = "haarcascade_frontalface_default.xml"; // path to xml
+  let faceCascadeFile = "haarcascade_frontalface_default.xml";
   utils.createFileFromUrl(faceCascadeFile, faceCascadeFile, () => {
-    classifier.load(faceCascadeFile); // in the callback, load the cascade from file
+    classifier.load(faceCascadeFile);
   });
   const FPS = 24;
 
@@ -143,9 +138,19 @@ function videoDetectFace() {
     canvas.getContext("2d").drawImage(video, 0, 0, canvas.width, canvas.height);
     let image_data_url = canvas.toDataURL("image/jpeg");
 
-    // data url of the image
+    //Sharpen cu imaginea capturata de la face detection
+    let src = cv.imread("canvasOutput4");
+    let dst = new cv.Mat();
+    let ksize = new cv.Size(3, 3);
+    cv.GaussianBlur(src, dst, ksize, 0, 0, cv.BORDER_DEFAULT);
+    cv.addWeighted(src, 3.5, dst, -2.5, 0, dst);
+    cv.imshow("canvasOutput", dst);
+    src.delete();
+    dst.delete();
+
+    //Sharpen
+
     console.log(image_data_url);
-    console.log("BALABLABDKSBDCSKJBC");
   }
 
   function processVideo() {
@@ -168,16 +173,13 @@ function videoDetectFace() {
       let point2 = new cv.Point(face.x + face.width, face.y + face.height);
       cv.rectangle(dst, point1, point2, [255, 0, 0, 255]);
     }
+
     cv.imshow("canvasOutput3", dst);
-    // schedule next one.
     let delay = 1000 / FPS - (Date.now() - begin);
     setTimeout(processVideo, delay);
   }
-  // schedule first one.
   setTimeout(processVideo, 0);
 }
-
-// previous code is here
 
 document.getElementById("downloadButton").onclick = function () {
   this.href = document.getElementById("canvasOutput").toDataURL();
