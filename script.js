@@ -146,9 +146,7 @@ function videoDetectFace() {
     cv.imshow("canvasOutput", dst);
     src.delete();
     dst.delete();
-
     //Sharpen
-
     console.log(image_data_url);
   }
 
