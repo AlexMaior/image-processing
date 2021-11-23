@@ -1,9 +1,16 @@
+body {
+  background-color: #585858;
+  text-align: center;
+}
+
 #imageSrc {
   width: 400px;
 }
 
 .generalContainer {
   display: flex;
+  justify-content: center;
+  margin-bottom: 70px;
 }
 
 .videoAndBtn {
@@ -15,9 +22,42 @@
 
 .videoCanvas {
   display: flex;
-  align-items: flex-start;
+  justify-content: space-around;
 }
 
 canvas {
-  border: 1px solid red;
+  border: 1px solid rgb(53, 53, 53);
+}
+
+p {
+  text-align: center;
+}
+
+button {
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+h1,
+h2,
+p {
+  color: #d6d6d6;
+}
+
+a {
+  background-color: #d8d8d8;
+  padding: 3px;
+  text-decoration: none;
+  color: black;
+  border-radius: 3px;
+  font-size: 20px;
+}
+
+a:hover {
+  cursor: pointer;
+  background-color: #b1b1b1;
+}
+
+#downloadButton {
+  background-color: cyan;
 }

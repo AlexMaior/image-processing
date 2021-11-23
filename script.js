@@ -15,8 +15,7 @@ btn.addEventListener("click", convo);
 
 function convo() {
   //Am observat ca daca in loc de imageScr bagam imaginea din canvas
-  //si dam click pe butonul "Try It" efectul se tot aplica
-  //pana cand imaginea devine "arsa"
+  //si dam click pe butonul "Try It" efectul se tot aplica de mai multe ori
   let src = cv.imread("imageSrc");
   let dst = new cv.Mat();
   let M = cv.Mat.eye(2, 2, cv.CV_32FC1);

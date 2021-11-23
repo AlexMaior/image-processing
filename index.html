@@ -6,42 +6,65 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <p id="status">OpenCV.js is loading...</p>
+    <h1 id="status">OpenCV.js is loading...</h1>
     <h2>Procesare Video</h2>
     <div class="videoCanvas">
       <div class="videoAndBtn">
         <video id="videoInput" width="320" height="240" controls></video>
         <button id="video">Video</button>
-        <button id="videoFace">Video Face</button>
+        <button id="videoFace">Video for Face detection</button>
       </div>
-      <canvas width="320" height="240" id="canvasOutput2"></canvas>
-      <canvas width="320" height="240" id="canvasOutput3"></canvas>
-      <canvas width="320" height="240" id="canvasOutput4"></canvas>
+      <div class="videoAndBtn">
+        <canvas width="320" height="240" id="canvasOutput2"></canvas>
+        <p>Video Black and White</p>
+      </div>
+      <div class="videoAndBtn">
+        <canvas width="320" height="240" id="canvasOutput3"></canvas>
+        <p>Video for face detection</p>
+      </div>
+      <div class="videoAndBtn">
+        <canvas width="320" height="240" id="canvasOutput4"></canvas>
+        <p>First image from video</p>
+      </div>
     </div>
 
     <h2>Procesare Imagini</h2>
     <div class="generalContainer">
       <div class="inputoutput">
-        <img id="imageSrc" alt="No Image" />
+        <img id="imageSrc" />
         <div class="caption">
           <input type="file" id="fileInput" name="file" />
         </div>
       </div>
       <div class="inputoutput">
         <canvas id="canvasOutput"></canvas>
-        <div class="caption">canvasOutput</div>
+        <div class="caption">Output</div>
       </div>
     </div>
 
     <div>
-      <button id="reset">Reset</button>
-      <button id="convolution">Convolution</button>
-      <button id="blurringGaussian">Gaussian Blur</button>
-      <button id="blurringMedian">Median Blur</button>
-      <button id="bilateralFilter">Bilateral Filter</button>
-
+      <a id="reset">Reset</a>
+      <a id="convolution">Convolution</a>
+      <a id="blurringGaussian">Gaussian Blur</a>
+      <a id="blurringMedian">Median Blur</a>
+      <a id="bilateralFilter">Bilateral Filter</a>
       <a href="#" id="downloadButton">Download Image</a>
     </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
     <script type="text/javascript">
       let imgElement = document.getElementById("imageSrc");
       let inputElement = document.getElementById("fileInput");
